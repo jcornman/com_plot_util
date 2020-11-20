@@ -1,11 +1,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
+
 import matplotlib.animation as animation
+import time
+start_time = time.time()
 
 fig, ax = plt.subplots()
 
 x = np.arange(0, 2*np.pi, 0.01)
 line, = ax.plot(x, np.sin(x))
+ax.set_ylim(-2,2)
+xdata, ydata = [0]*623, [0]*623
 
 
 def init():  # only required for blitting to give a clean slate.
@@ -13,8 +18,16 @@ def init():  # only required for blitting to give a clean slate.
     return line,
 
 
-def animate(i):
-    line.set_ydata(np.sin(x + i / 100))  # update the data.
+def animate(data):
+    #line.set_ydata(np.sin(i/50) )  # update the data.
+    t = time.time()-start_time
+    del xdata[0]
+    del ydata[0]
+    xdata.append(t)
+    ydata.append(np.sin(t*2*np.pi))
+    ax.relim()
+    ax.autoscale_view()
+    line.set_data(xdata,ydata)
     return line,
 
 
