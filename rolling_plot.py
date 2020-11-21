@@ -1,8 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
 import matplotlib.animation as animation
 import time
+import serial
+
 start_time = time.time()
 
 fig, ax = plt.subplots()
