@@ -51,8 +51,8 @@ class AniPlot():
             del (self.data[index])[0]
 
         # get data
-        f_arr = getfloat.get_floats(self.ser,7)
-        #print (f_arr)
+        f_arr = getfloat.get_floats(self.ser,self.numlines)
+        print (f_arr)
 
         # append new data to lists
         self.t.append(time.time()-self.start_time)
